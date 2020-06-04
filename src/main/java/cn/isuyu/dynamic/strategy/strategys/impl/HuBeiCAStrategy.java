@@ -7,13 +7,13 @@ import org.springframework.stereotype.Component;
  * @Author NieZhiLiang
  * @Email nzlsgg@163.com
  * @GitHub https://github.com/niezhiliang
- * @Date 2020/6/4 上午10:42
+ * @Date 2020/6/4 上午10:41
  */
 @Component
-public class OtherIdentityStrategy implements IdentityStrategy {
+public class HuBeiCAStrategy implements IdentityStrategy {
 
     @Override
-    public void identity() {
-        System.out.println("使用其它方式认证。。。");
+    public void applyCaCert() {
+        System.out.println("使用湖北CA申请证书。。。");
     }
 }

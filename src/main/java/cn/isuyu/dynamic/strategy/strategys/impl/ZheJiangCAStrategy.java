@@ -10,10 +10,11 @@ import org.springframework.stereotype.Component;
  * @Date 2020/6/4 上午10:42
  */
 @Component
-public class JuheIdentityStrategy implements IdentityStrategy {
+public class ZheJiangCAStrategy implements IdentityStrategy {
+
 
     @Override
-    public void identity() {
-        System.out.println("使用聚合数据进行认证。。。");
+    public void applyCaCert() {
+        System.out.println("使用浙江CA申请证书。。。");
     }
 }

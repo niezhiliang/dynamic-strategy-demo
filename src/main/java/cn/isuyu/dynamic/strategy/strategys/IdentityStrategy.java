@@ -8,6 +8,6 @@ package cn.isuyu.dynamic.strategy.strategys;
  */
 public interface IdentityStrategy {
 
-    void identity();
+    void applyCaCert();
 
 }

@@ -1,10 +1,9 @@
 package cn.isuyu.dynamic.strategy.controller;
 
-import cn.isuyu.dynamic.strategy.context.IdentityContext;
 import cn.isuyu.dynamic.strategy.entity.Strategys;
 import cn.isuyu.dynamic.strategy.service.IServicesService;
 import cn.isuyu.dynamic.strategy.strategys.IdentityStrategy;
-import cn.isuyu.dynamic.strategy.strategys.impl.ShujubaoIdentityStrategy;
+import cn.isuyu.dynamic.strategy.strategys.StrategyContext;
 import cn.isuyu.dynamic.strategy.utils.SpringContextUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +27,8 @@ public class IndexController {
         Strategys strategys = servicesService.getUserServiceStrategy(sid,uid);
         Class<IdentityStrategy> identityStrategyClass = (Class<IdentityStrategy>) Class.forName(strategys.getStrategyClass());
         IdentityStrategy identityStrategy = SpringContextUtils.getBean(identityStrategyClass);
-        IdentityContext identityContext = new IdentityContext(identityStrategy);
-        identityContext.identity();
+        StrategyContext identityContext = new StrategyContext(identityStrategy);
+        identityContext.applyCaCert();
 
         return "success";
     }
