@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    name: zhendao
+    url: jdbc:mysql://127.0.0.1:3306/dynamic-strategy?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&autoReconnect=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: adminadmin
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis-plus:
+  global-config:
+    banner: false
+    db-config:
+      select-strategy: not_empty
