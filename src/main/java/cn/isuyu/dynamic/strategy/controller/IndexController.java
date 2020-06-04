@@ -28,6 +28,14 @@ public class IndexController {
     @Autowired
     private IUserService userService;
 
+    /**
+     * 目前userid 只有1
+     * sid 有 1 2 3 三种策略
+     * @param sid
+     * @param uid
+     * @return
+     * @throws ClassNotFoundException
+     */
     @GetMapping(value = "/identity/{sid}/{uid}")
     public String identity(@PathVariable("sid") Integer sid,@PathVariable(value = "uid") Integer uid) throws ClassNotFoundException {
 
