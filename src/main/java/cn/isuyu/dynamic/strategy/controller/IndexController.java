@@ -1,7 +1,10 @@
 package cn.isuyu.dynamic.strategy.controller;
 
+import cn.isuyu.dynamic.strategy.dtos.CACertDTO;
 import cn.isuyu.dynamic.strategy.entity.Strategys;
+import cn.isuyu.dynamic.strategy.entity.User;
 import cn.isuyu.dynamic.strategy.service.IServicesService;
+import cn.isuyu.dynamic.strategy.service.IUserService;
 import cn.isuyu.dynamic.strategy.strategys.IdentityStrategy;
 import cn.isuyu.dynamic.strategy.strategys.StrategyContext;
 import cn.isuyu.dynamic.strategy.utils.SpringContextUtils;
@@ -22,13 +25,23 @@ public class IndexController {
     @Autowired
     private IServicesService servicesService;
 
+    @Autowired
+    private IUserService userService;
+
     @GetMapping(value = "/identity/{sid}/{uid}")
     public String identity(@PathVariable("sid") Integer sid,@PathVariable(value = "uid") Integer uid) throws ClassNotFoundException {
+
+        User user = userService.getById(uid);
+
         Strategys strategys = servicesService.getUserServiceStrategy(sid,uid);
         Class<IdentityStrategy> identityStrategyClass = (Class<IdentityStrategy>) Class.forName(strategys.getStrategyClass());
         IdentityStrategy identityStrategy = SpringContextUtils.getBean(identityStrategyClass);
         StrategyContext identityContext = new StrategyContext(identityStrategy);
-        identityContext.applyCaCert();
+
+        CACertDTO caCertDTO = new CACertDTO();
+        caCertDTO.setName(user.getName());
+
+        identityContext.applyCaCert(caCertDTO);
 
         return "success";
     }

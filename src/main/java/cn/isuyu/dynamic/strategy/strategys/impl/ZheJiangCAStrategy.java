@@ -1,5 +1,6 @@
 package cn.isuyu.dynamic.strategy.strategys.impl;
 
+import cn.isuyu.dynamic.strategy.dtos.CACertDTO;
 import cn.isuyu.dynamic.strategy.strategys.IdentityStrategy;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +15,7 @@ public class ZheJiangCAStrategy implements IdentityStrategy {
 
 
     @Override
-    public void applyCaCert() {
-        System.out.println("使用浙江CA申请证书。。。");
+    public void applyCaCert(CACertDTO dto) {
+        System.out.println(dto.getName()+"：使用浙江CA申请证书。。。");
     }
 }

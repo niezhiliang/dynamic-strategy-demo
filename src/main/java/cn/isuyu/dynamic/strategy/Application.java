@@ -1,8 +1,6 @@
 package cn.isuyu.dynamic.strategy;
 
-import org.apache.catalina.core.ApplicationContext;
 import org.mybatis.spring.annotation.MapperScan;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -18,7 +16,5 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class Application {
     public static void main(String[] args) {
         ConfigurableApplicationContext applicationContext = SpringApplication.run(Application.class);
-        BeanFactory beanFactory = applicationContext.getBeanFactory();
-        System.out.println("sdf");
     }
 }

@@ -1,5 +1,7 @@
 package cn.isuyu.dynamic.strategy.strategys;
 
+import cn.isuyu.dynamic.strategy.dtos.CACertDTO;
+
 /**
  * @Author NieZhiLiang
  * @Email nzlsgg@163.com
@@ -8,6 +10,6 @@ package cn.isuyu.dynamic.strategy.strategys;
  */
 public interface IdentityStrategy {
 
-    void applyCaCert();
+    void applyCaCert(CACertDTO dto);
 
 }
